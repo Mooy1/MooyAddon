@@ -43,6 +43,12 @@ public final class PoweredBedrock extends SlimefunItem implements EnergyNetCompo
                 }
                 Location l = b.getLocation();
                 if (getCharge(l) < energy) {
+
+                    // dupe prevention 
+                    if (b.getType() == Material.AIR) {
+                        return;
+                    }
+                    
                     if (b.getType() != Material.NETHERITE_BLOCK) {
                         b.setType(Material.NETHERITE_BLOCK);
                         return;
